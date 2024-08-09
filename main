@@ -1,0 +1,34 @@
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+trial = "https://github.com/Milleu830/cfig/raw/main/%C4%91i%20trial%20cho%20acc%20b%C3%A1n.json"
+main = "https://raw.githubusercontent.com/Milleu830/cfig/main/cfig%20cho%20main%20acc.json"
+farm = "https://github.com/Milleu830/cfig/raw/main/Farm%20sau%20khi%20trial.json"
+local url = trial
+
+
+
+
+
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+local playerName = player.Name  -- Extract player's name as a string
+
+
+
+local response = game:HttpGet(url)
+
+local config = HttpService:JSONDecode(response)
+
+local folder = "Banana Cat Hub"
+local filename = playerName .. "-BFNew.json"  -- Use player's name for the filename
+
+-- Ensure the folder exists
+if not isfolder(folder) then
+    makefolder(folder)
+end
+wait(1)
+writefile(folder .. "/" .. filename, HttpService:JSONEncode(config))
+getgenv().Key = "0aa6c60c34e27ae1e69153eb" 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaHub.lua"))()
